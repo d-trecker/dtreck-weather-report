@@ -1,0 +1,64 @@
+.header {
+  display: flex;
+  justify-content: center;
+  background-color: #fa8bff;
+  background-image: linear-gradient(
+    45deg,
+    #343634 0%,
+    #54e61b 52%,
+    #343634 90%
+  );
+  font-size: 5vh;
+  border: solid, black, 20px;
+  padding: 20px;
+  font-weight: bold;
+}
+
+.search {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  background-color: black;
+}
+
+body {
+  margin: 0;
+  background-color: black;
+}
+
+main {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  justify-content: space-around;
+  width: 100%;
+  float: right;
+  height: auto;
+}
+
+.weather {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  background-color: cadetblue;
+}
+
+.forecast {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  background-color: cadetblue;
+  width: 100%;
+}
+
+.previous {
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: grey;
+  height: 100%;
+}
