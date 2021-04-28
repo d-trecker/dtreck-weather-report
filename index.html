@@ -14,32 +14,68 @@
     <title>DT Weather Report!</title>
   </head>
   <body>
-    <header class="header" id="page-header">D-Treck's Weather Report</header>
+    <div class="container">
+      <div class="row">
+        <header class="header col-12" id="page-header">
+          D-Treck's Weather Report
+        </header>
+      </div>
 
-    <div class="search">
-      <input type="text" class="search-bar" />
-      <button>Search</button>
+      <div class="row">
+        <div class="col-3 search">
+          <h3>Search For A City</h3>
+          <div class="input-group mb-3">
+            <input
+              type="text"
+              class="form-control search-bar"
+              aria-label="Sizing example input"
+              aria-describedby="inputGroup-sizing-default"
+            />
+          </div>
+          <button type="button" class="btn btn-success">Search</button>
+        </div>
+        <div class="col-9 weather">
+          <h2 class="city">Weather</h2>
+          <img src="" class="icon" />
+          <div class="temp">temp</div>
+          <div class="description">cloudy</div>
+          <div class="humidity">humidity 60%</div>
+          <div class="wind">wind speed 6.2 km/h</div>
+          <div id="5day-forecast" class="forecast">
+            <div
+              class="card text-white bg-success mb-3"
+              style="max-width: 18rem"
+            >
+              <div id="1"></div>
+            </div>
+            <div
+              class="card text-white bg-success mb-3"
+              style="max-width: 18rem"
+            >
+              <div id="2"></div>
+            </div>
+            <div
+              class="card text-white bg-success mb-3"
+              style="max-width: 18rem"
+            >
+              <div id="3"></div>
+            </div>
+            <div
+              class="card text-white bg-success mb-3"
+              style="max-width: 18rem"
+            >
+              <div id="4"></div>
+            </div>
+            <div
+              class="card text-white bg-success mb-3"
+              style="max-width: 18rem"
+            >
+              <div id="5"></div>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
-    <main>
-      <div class="weather">
-        <h2 class="city">Weather</h2>
-        <div class="temp">temp</div>
-        <img src="" class="icon" />
-        <div class="description">cloudy</div>
-        <div class="humidity">humidity 60%</div>
-        <div class="wind">wind speed 6.2 km/h</div>
-      </div>
-      <div id="5day-forecast" class="forecast">
-        <div id="1"></div>
-        <div id="2"></div>
-        <div id="3"></div>
-        <div id="4"></div>
-        <div id="5"></div>
-      </div>
-    </main>
-    <section class="previous" id="previous-searches">
-      Previous Weather Searches
-    </section>
     <script src="./assets/js/script.js" defer></script>
   </body>
 </html>

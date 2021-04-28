@@ -4,7 +4,7 @@ function fetchWeather(city) {
   fetch(
     "https://api.openweathermap.org/data/2.5/weather?q=" +
       city +
-      "&units=metric&appid=" +
+      "&units=imperial&appid=" +
       apiKey
   )
     .then((response) => response.json())
@@ -12,7 +12,7 @@ function fetchWeather(city) {
   fetch(
     "https://api.openweathermap.org/data/2.5/forecast?q=" +
       city +
-      "&appid=" +
+      "&units=imperial&appid=" +
       apiKey
   )
     .then((response) => response.json())
@@ -31,9 +31,9 @@ function displayWeather(data) {
   document.querySelector(".city").innerText = "Weather in " + name; //+ " " + dt_txt;
   document.querySelector(".icon").src =
     "http://openweathermap.org/img/wn/" + icon + ".png";
-  document.querySelector(".temp").innerText = temp + " Degree in Celcius";
-  document.querySelector(".humidity").innerText = "humidity: " + humidity + "%";
-  document.querySelector(".wind").innerText = "wind speed: " + speed + "km/h";
+  document.querySelector(".temp").innerText = "Temp: " + temp + " &deg;F ";
+  document.querySelector(".humidity").innerText = "Humidity: " + humidity + "%";
+  document.querySelector(".wind").innerText = "Wind Speed: " + speed + "km/h";
 }
 function displayForecast(data) {
   console.log(data);
