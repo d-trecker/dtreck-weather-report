@@ -1,6 +1,5 @@
 body {
   margin: 0;
-  /* background: black !important; */
 }
 
 .header {
@@ -31,12 +30,46 @@ body {
   background-color: rgba(128, 128, 128, 0.454);
 }
 
+.city {
+  text-align: center;
+}
+
+h3 {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  text-align: center;
+  font-size: 1vh;
+}
+
 .forecast {
   display: flex;
   flex-wrap: wrap;
   flex-direction: row;
   justify-content: space-evenly;
 }
+
+.past-search {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  margin-top: 5px;
+  border-top: 5px solid rgba(128, 128, 128, 0.454);;
+  font-size: 3vh;
+  font-weight: bolder;
+}
+
+.past {
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+
+/* p {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  text-align: center;
+} */
 
 .card {
   display: flex;
@@ -54,6 +87,8 @@ body {
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  text-align: center;
+  white-space: pre;
 }
 
 .hide {

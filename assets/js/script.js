@@ -1,5 +1,6 @@
 const weatherBoard = document.querySelector(".weather");
 const fiveDayForecast = document.querySelector(".forecast");
+var userSearch = document.querySelector(".search-bar").value;
 const apiKey = "518e332496f9c7d64d9306fda13a1ae4";
 
 //----Funcation to get Current Date ----
@@ -32,7 +33,7 @@ function fetchWeather(city) {
     .then((response) => response.json())
     .then((data) => displayForecast(data));
 }
-//----Function to Display Weather and Forecast----
+//----Function to Display Weather----
 function displayWeather(data) {
   weatherBoard.classList.remove("hide");
   fiveDayForecast.classList.remove("hide");
@@ -43,9 +44,8 @@ function displayWeather(data) {
   const { temp } = data.main;
   const { humidity } = data.main;
   const { speed } = data.wind;
-  // const { uv } = data.
   console.log(name, icon, description, temp, humidity, speed);
-  document.querySelector(".city").innerText = "Weather in " + name + " " + " on " + todayDate;
+  document.querySelector(".city").innerText = "Today is: " + todayDate + "\n" + "The weather in " + name + " looks like: ";
   document.querySelector(".icon").src =
     "http://openweathermap.org/img/wn/" + icon + ".png";
   document.querySelector(".temp").innerText = "Temp: " + temp + "° ";
@@ -55,22 +55,20 @@ function displayWeather(data) {
 //----Function to display the 5 Day Forecast----
 function displayForecast(data) {
   console.log(data);
-  let pointer = 1;
+  let counter = 1;
   for (let i = 0; i < data.list.length; i += 8) {
-    const { dt_txt } = data.list[i];
-    const { icon } = data.list[i].weather[0];
-    const { temp } = data.list[i].main;
-    const { humidity } = data.list[i].main;
-    const { speed } = data.list[i].wind;
-    const dateDiv = (document.createElement("div").innerText = dt_txt);
-    const tempDiv = (document.createElement("div").innerText = "Temp: " + temp);
-    const iconImg = document.createElement("img");
+    var { dt_txt } = data.list[i];
+    dt_txt = moment(dt_txt).format("MM/DD/YYYY");
+    var { icon } = data.list[i].weather[0];
+    var { temp } = data.list[i].main;
+    var { humidity } = data.list[i].main;
+    var { speed } = data.list[i].wind;
+    var iconImg = document.createElement("img");
     iconImg.src = "http://openweathermap.org/img/wn/" + icon + ".png";
-    const humidityDiv = (document.createElement("div").innerText = "Humidity: " + humidity + "%");
-    const speedDiv = (document.createElement("div").innerText = "Wind: " + speed + " MPH");
-    const day = document.getElementById(pointer);
-    day.append(iconImg, dateDiv, "\n", tempDiv, "\n", humidityDiv, "\n", speedDiv);
-    pointer++;
+    var forecastDiv = (document.createElement("div").innerText = dt_txt + "\n" + "Temp: " + temp + "\n" + "Humidity: " + humidity + "%" + "\n" + "Wind: " + speed + " MPH");
+    var day = document.getElementById(counter);
+    day.append(iconImg, forecastDiv);
+    counter++;
   }
 }
 //----Function to Capture search input value after button click and runs fetch for weather----
@@ -78,8 +76,11 @@ var searchResult = function() {
   this.fetchWeather(document.querySelector(".search-bar").value);
 }
 document.querySelector("button").addEventListener("click", function () {
-  // debugger;
+  var searchInput = $(".search-bar").val();
+  if (searchInput != "") {
+  $(".results").empty();
   searchResult();
+  //-Create Previous Search Buttons-
   var searchedCity = document.querySelector(".search-bar").value;
   window.localStorage.setItem("cityName", JSON.stringify(searchedCity));
   var cityName = JSON.parse(window.localStorage.getItem("cityName"));
@@ -87,35 +88,15 @@ document.querySelector("button").addEventListener("click", function () {
   var pastContainer = document.getElementById("past-search-buttons");
   var cityEl = document.createElement("button"); 
   cityEl.innerText = cityName;
-  cityEl.classList = "flex-column align-center";
-  cityEl.setAttribute = "key, value";
+  cityEl.classList.add ("past");
+  cityEl.addEventListener("click", pastDisplay);
   pastContainer.append(cityEl);
-  
+//----Function to display previous cities----
+  function pastDisplay() {
+    $(".results").empty()
+    fetchWeather(cityName)
+  }
+  } 
 });
-//  $(".current").empty()
-
-// removeAllChildNodes(fiveDayForecast);
 
 
-//----Method 1
-function removeAllChildNodes(fiveDayForecast) {
-  while (fiveDayForecast.firstChild) {
-      fiveDayForecast.removeChild(fiveDayForecast.firstChild);
-  }
-}
- 
-
-//----Method 2
-function clearBox(fiveDayForecast) {
-  var div = document.getElementById(fiveDayForecast);
-    
-  while(div.firstChild) {
-      div.removeChild(div.firstChild);
-  }
-}
-
-
-//----Method 3
-function clearcontent(fiveDayForecast) {
-fiveDayForecast.innerHTML = "";
-}
