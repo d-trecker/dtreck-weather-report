@@ -81,4 +81,4 @@ Repository contains multiple descriptive commit messages
 Repository contains quality README file with description, screenshot, and link to deployed application
 
 Screenshot: 
-![](assets/images/screen-shot.PNG)
+![](assets/images/screen-shot.png)
